@@ -1,0 +1,19 @@
+meta {
+  name: Add Book
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3001/books
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Tifel2",
+    "description": "Exploring inthe woods",
+    "genre": "Adventure"
+  }
+}

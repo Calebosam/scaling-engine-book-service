@@ -1,0 +1,23 @@
+meta {
+  name: Update Book by ID
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:3001/books/:id
+  body: json
+  auth: none
+}
+
+params:path {
+  id: 1
+}
+
+body:json {
+  {
+    "title": "Tifel's Roadmap",
+    "description": "Exploring inthe woods",
+    "genre": "Adventure"
+  }
+}

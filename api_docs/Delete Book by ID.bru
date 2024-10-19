@@ -1,0 +1,15 @@
+meta {
+  name: Delete Book by ID
+  type: http
+  seq: 6
+}
+
+delete {
+  url: http://localhost:3001/books/:id
+  body: none
+  auth: none
+}
+
+params:path {
+  id: 2
+}

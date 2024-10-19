@@ -1,0 +1,22 @@
+{
+  "name": "scaling-engine-book-service",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "git@github.com-work:Calebosam/scaling-engine-book-service.git",
+  "author": "calebosam <caleb.osam@amalitech.com>",
+  "license": "MIT",
+  "scripts": {
+    "db:init": "npx prisma init",
+    "db:generate": "npx prisma generate",
+    "db:migrate": "npx prisma migrate dev --name init",
+    "db:push": "npx prisma db push",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.21.1",
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "prisma": "^5.21.1"
+  }
+}
