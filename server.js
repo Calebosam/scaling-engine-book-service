@@ -2,12 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { PrismaClient } = require('@prisma/client');
 const dotenv = require('dotenv')
+const cors = require('cors')
 dotenv.config()
 
 const app = express();
 const prisma = new PrismaClient();
 const port = process.env.PORT || 3001;
 
+app.use(cors())
 app.use(bodyParser.json());
 
 // Create a new book
