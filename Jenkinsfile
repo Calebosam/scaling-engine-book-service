@@ -30,7 +30,7 @@ pipeline{
                     script {
                         sh """
                             docker -v
-                            echo  ${IMAGE_TAG} ${ECR_REPO_NAME}
+                            echo  '${IMAGE_TAG} ${ECR_REPO_NAME}'
                         """
           }
         }
