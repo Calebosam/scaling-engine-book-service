@@ -7,7 +7,7 @@ pipeline{
 
     environment {
         AWS_REGION = 'eu-west-2'
-        ECR_REPO_NAME = 'your-ecr-repo'
+        ECR_REPO_NAME = '646370748778.dkr.ecr.eu-west-2.amazonaws.com'
         IMAGE_TAG = "${env.BUILD_NUMBER}"
         AWS_CREDENTIALS_ID = 'aws-cred'
     }
@@ -28,10 +28,12 @@ pipeline{
             steps{
                 withAWS(region:"${AWS_REGION}", credentials:"${AWS_CREDENTIALS_ID}") {
                     script {
-                        sh """
-                            docker -v
-                            echo  '${IMAGE_TAG} ${ECR_REPO_NAME}'
-                        """
+                        sh '''
+                            aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO_NAME
+                            docker build -t book-service .
+                            docker tag book-service:latest $ECR_REPO_NAME/book-service:latest
+                            docker push $ECR_REPO_NAME/book-service:$IMAGE_TAG
+                        '''
           }
         }
 
