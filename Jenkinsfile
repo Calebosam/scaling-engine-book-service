@@ -8,7 +8,7 @@ pipeline{
     environment {
         AWS_REGION = 'eu-west-2'
         ECR_REPO_NAME = 'your-ecr-repo'
-        IMAGE_TAG = env.BUILD_NUMBER
+        IMAGE_TAG = '${env.BUILD_NUMBER}'
         AWS_CREDENTIALS_ID = 'aws-cred'
     }
     stages{
@@ -26,7 +26,7 @@ pipeline{
         }
         stage("Build Docker Image"){
             steps{
-                withAWS(region:${AWS_REGION}, credentials:${AWS_CREDENTIALS_ID}) {
+                withAWS(region:"${AWS_REGION}", credentials:"${AWS_CREDENTIALS_ID}") {
                     script {
                         sh """
                             docker -v
