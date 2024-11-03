@@ -32,7 +32,7 @@ pipeline{
                             aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO_NAME
                             sudo docker build -t book-service .
                             sudo docker tag book-service:latest $ECR_REPO_NAME/book-service:latest
-                            sudo docker push $ECR_REPO_NAME/book-service:$IMAGE_TAG
+                            sudo docker push $ECR_REPO_NAME/book-service:latest
                         '''
           }
         }
