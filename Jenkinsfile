@@ -29,10 +29,10 @@ pipeline{
                 withAWS(region:"${AWS_REGION}", credentials:"${AWS_CREDENTIALS_ID}") {
                     script {
                         sh '''
-                            aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO_NAME
+                            aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin 646370748778.dkr.ecr.eu-west-2.amazonaws.com
                             sudo docker build -t book-service .
-                            sudo docker tag book-service:latest $ECR_REPO_NAME/book-service:latest
-                            sudo docker push $ECR_REPO_NAME/book-service:latest
+                            sudo docker tag book-service:latest 646370748778.dkr.ecr.eu-west-2.amazonaws.com/book-service:latest
+                            sudo docker push 646370748778.dkr.ecr.eu-west-2.amazonaws.com/book-service:latest
                         '''
           }
         }
