@@ -30,9 +30,9 @@ pipeline{
                     script {
                         sh '''
                             aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO_NAME
-                            docker build -t book-service .
-                            docker tag book-service:latest $ECR_REPO_NAME/book-service:latest
-                            docker push $ECR_REPO_NAME/book-service:$IMAGE_TAG
+                            sudo docker build -t book-service .
+                            sudo docker tag book-service:latest $ECR_REPO_NAME/book-service:latest
+                            sudo docker push $ECR_REPO_NAME/book-service:$IMAGE_TAG
                         '''
           }
         }
